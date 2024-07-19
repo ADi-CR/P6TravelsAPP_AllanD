@@ -3,7 +3,7 @@ using Android.Runtime;
 
 namespace P6TravelsAPP_AllanD
 {
-    [Application]
+    [Application(UsesCleartextTraffic =true)]
     public class MainApplication : MauiApplication
     {
         public MainApplication(IntPtr handle, JniHandleOwnership ownership)

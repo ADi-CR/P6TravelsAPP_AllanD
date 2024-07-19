@@ -1,5 +1,6 @@
 ﻿using Microsoft.Extensions.Logging;
 
+
 namespace P6TravelsAPP_AllanD
 {
     public static class MauiProgram
