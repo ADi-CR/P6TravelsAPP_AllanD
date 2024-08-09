@@ -1,5 +1,7 @@
 using P6TravelsAPP_AllanD.ViewModels;
 
+using P6TravelsAPP_AllanD.Models;
+
 namespace P6TravelsAPP_AllanD.Views;
 
 public partial class UserSignUpPage : ContentPage
@@ -25,5 +27,36 @@ public partial class UserSignUpPage : ContentPage
     private async void BtnCancel_Clicked(object sender, EventArgs e)
     {
 		await Navigation.PopAsync();
+    }
+
+    private async void BtnAdd_Clicked(object sender, EventArgs e)
+    {
+		//TODO: debemos hacer una validación para los campos que son requisito 
+
+		var answer = await DisplayAlert("Confirmation Required", "Adding a new user. Are you sure?", "Yes", "No");
+
+		if (answer)
+		{
+			//extraer el objeto de tipo user role seleccionado en el picker (lista) 
+			UserRole SelectedUserRole = LstUserRoles.SelectedItem as UserRole;
+
+			bool R = await vm.VmAddUser(TxtEmail.Text.Trim(),
+								        TxtName.Text.Trim(),
+								        TxtPhone.Text.Trim(),
+								        TxtPassword.Text.Trim(),
+								        SelectedUserRole.UserRoleId);
+
+			if (R)
+			{
+				await DisplayAlert(":)", "User added!!", "OK");
+				await Navigation.PopAsync();
+			}
+			else 
+			{
+                await DisplayAlert(":(", "Error: ", "OK");
+            }
+
+		}
+
     }
 }

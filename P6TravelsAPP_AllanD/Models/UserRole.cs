@@ -38,10 +38,8 @@ namespace P6TravelsAPP_AllanD.Models
                 Request = new RestRequest(URL, Method.Get);
 
                 //agregamos la info de seguridad api key 
-                Request.AddHeader(Services.WebAPIConnection.ApiKeyName, Services.WebAPIConnection.ApiKeyValue);
-
-                //agregar la info de codificación (opcional)
-                Request.AddHeader(Services.WebAPIConnection.ContentType, Services.WebAPIConnection.MimeType);
+                Request.AddHeader(Services.WebAPIConnection.ApiKeyName, 
+                                  Services.WebAPIConnection.ApiKeyValue);
 
                 //se ejecuta la llamada 
                 RestResponse response = await client.ExecuteAsync(Request);
@@ -68,13 +66,8 @@ namespace P6TravelsAPP_AllanD.Models
                 string message = ex.Message;
                 throw;
             }
-        
-
-
-
-
-
-
         }
+
+
     }
 }

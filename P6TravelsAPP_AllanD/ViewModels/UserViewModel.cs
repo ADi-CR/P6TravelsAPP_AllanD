@@ -11,10 +11,12 @@ namespace P6TravelsAPP_AllanD.ViewModels
     {
 
         public UserRole MyUserRole { get; set; }
+        public User MyUser { get; set; }
 
         public UserViewModel()
         {
             MyUserRole = new UserRole();
+            MyUser = new User();
         }
 
         //función que carga los datos de los roles de usuario para mostrar en listas 
@@ -36,6 +38,51 @@ namespace P6TravelsAPP_AllanD.ViewModels
                 throw;
             }
         }
+
+
+        //funcion para agregar usuario
+        public async Task<bool> VmAddUser(string pEmail,
+                                          string pName,
+                                          string pPhoneNumber,
+                                          string pPassword,
+                                          int pRoleID)
+        { 
+            if (IsBusy) return false;
+            IsBusy = true;
+
+            try
+            {
+                MyUser = new()
+                {
+                    Correo = pEmail, 
+                    Nombre = pName,
+                    Telefono = pPhoneNumber,
+                    Contrasennia = pPassword,
+                    RolID = pRoleID
+                };
+
+                bool Ret = await MyUser.AddUserAsync();
+
+                return Ret;
+
+            }
+            catch (Exception)
+            {
+                return false;
+                throw;
+            }
+            finally
+            { IsBusy = false; }
+        
+        }
+
+
+
+
+
+
+
+
 
 
     }

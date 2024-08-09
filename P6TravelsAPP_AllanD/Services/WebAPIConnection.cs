@@ -13,19 +13,13 @@ namespace P6TravelsAPP_AllanD.Services
         //o la dirección IP del servidor como por ejemplo 85.25.45.10/api o local 
         //como 192.168.0.10/api
 
-        public static string BaseURL = "http://192.168.0.10:45457/api/";
+        public static string BaseURL = "http://192.168.0.10:45455/api/";
 
         //acá también es importante incluir la info de seguridad como el API Key
         //ya que debe ser incluido en cada llamada a los end point del API 
        
         public static string ApiKeyName = "ApiKey";
         public static string ApiKeyValue = "AllnDP620242abx123";
-
-        //también vamos a incluir (si es necesario) la forma como se va a codificar los 
-        //paquetes json que seran enviados y recibidos del API 
-
-        public static string MimeType = "application/json";
-        public static string ContentType = "Content-Type";
 
     }
 }
